@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Residence Certificate Application</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 2em;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e0e0e0;
+      margin: 30px 0;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    .radio-group,
+    .local-body-types {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .radio-group label,
+    .local-body-types label {
+      font-weight: 400;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .radio-group input,
+    .local-body-types input {
+      margin-right: 8px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #229954;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      border-left: 4px solid #3498db;
+    }
+
+    .section h3 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 20px;
+      margin-top: 25px;
+      max-width: 100%;
+      border-radius: 5px;
+      font-size: 12px;
+      overflow-x: auto;
+      border: 1px solid #ddd;
+    }
+
+    .saved-section {
+      margin-top: 40px;
+    }
+
+    .saved-section select,
+    .saved-section button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-section {
+      background: #fffbf0;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #f0c674;
+      font-family: Arial, sans-serif;
+    }
+
+    .tdata {
+      margin-bottom: 15px;
+    }
+
+    .tdata .lbl {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    .tdata .cont {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .mandatory {
+      color: red;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      .radio-group,
+      .local-body-types {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .clbox{
+      display: flex;
+      justify-content: space-between;
+    }
+    .clsubbox{
+      width: 48%;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+
+
+
+<body>
+
+  <h2>Application Form for Residence Certificate</h2>
+
+
+
+
+
+  <form id="residenceForm">
+
+
+    <div class="section">
+
+      
+      <label for="applyFor">Apply For *</label>
+      <select id="applyFor" required>
+        <option value="">Please Select</option>
+        <option value="Residence Certificate">Residence Certificate</option>
+        <option value="Caste Certificate">Caste Certificate</option>
+        <option value="Income Certificate">Income Certificate</option>
+      </select>
+  
+
+
+      <div class="clbox">
+
+        <div class="clsubbox">
+
+          <!-- Gender -->
+          <label>Gender *</label>
+          <div class="radio-group" id="gender">
+            <label><input type="radio" name="gender" value="Male" id="genderMale" required /> पुरुष / Male</label>
+            <label><input type="radio" name="gender" value="Female" id="genderFemale" /> स्त्री / Female</label>
+            <label><input type="radio" name="gender" value="Third Gender" id="genderThird" /> तृतीय लिंग / Third
+              Gender</label>
+          </div>
+        </div>
+
+        <div class="clsubbox">
+
+          <!-- Salutation -->
+          <label for="salutation">Salutation *</label>
+          <select id="salutation" required>
+            <option value="">Please Select</option>
+            <option value="Shri">Shri</option>
+            <option value="Smt">Smt</option>
+            <option value="Kumari">Kumari</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="clbox">
+
+        <div class="clsubbox">
+          <!-- Applicant Name -->
+          <label for="applicantName">Name of Applicant *</label>
+          <input type="text" id="applicantName" required />
+        </div>
+        <div class="clsubbox">
+          <label for="applicantNameHindi">आवेदक / आवेदिका का नाम</label>
+          <input type="text" id="applicantNameHindi" />
+        </div>
+      </div>
+
+  
+      <div class="clbox">
+        <div class="clsubbox">
+          <!-- Father Name -->
+          <label for="fatherName">Name of Father *</label>
+          <input type="text" id="fatherName" required />
+        </div>
+        <div class="clsubbox">
+          <label for="fatherNameHindi">पिता का नाम</label>
+          <input type="text" id="fatherNameHindi" />
+        </div>
+      </div>
+  
+  
+      <div class="clbox">
+        
+        <div class="clsubbox">
+          <!-- Mother Name -->
+          <label for="motherName">Name of Mother *</label>
+          <input type="text" id="motherName" required />
+        </div>
+        <div class="clsubbox">
+          <label for="motherNameHindi">माता का नाम</label>
+          <input type="text" id="motherNameHindi" />
+        </div>
+      </div>
+
+  
+  
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="husbandName">Name of Husband</label>
+          <input type="text" id="husbandName" />
+        </div>
+
+        <div class="clsubbox">
+          <label for="husbandNameHindi">पति का नाम</label>
+          <input type="text" id="husbandNameHindi" />
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="mobile">Mobile No. of Applicant *</label>
+          <input type="tel" id="mobile" required />
+        </div>
+
+        <div class="clsubbox">
+          <label for="email">Email of Applicant</label>
+          <input type="email" id="email" />
+        </div>
+      </div>
+
+  
+      <hr />
+    </div>
+
+
+
+    <div class="section">
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="state">State *</label>
+          <select id="state" required>
+            <option value="">Please Select</option>
+            <option value="BIHAR">BIHAR</option>
+          </select>
+        </div>
+
+        <div class="clsubbox">
+          <label for="district">District *</label>
+          <select id="district" name="17297" required>
+            <option value="">Please Select</option>
+            <option value="GAYA/गया">GAYA/गया</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="subdivision">Sub-Division *</label>
+          <select id="subdivision" name="17296" required>
+            <option value="">Please Select</option>
+          </select>
+        </div>
+
+        <div class="clsubbox">
+          <label for="block">Block *</label>
+          <select id="block" required>
+            <option value="">Please Select</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox" style="flex: 1 1 100%;">
+          <label>Type of Local Body *</label>
+          <div class="local-body-types" id="localBodyType">
+            <label><input type="radio" name="localBodyType" value="1" required /> ग्राम पंचायत / Village Panchayat</label>
+            <label><input type="radio" name="localBodyType" value="2" /> नगर निगम / Municipal Corporation</label>
+            <label><input type="radio" name="localBodyType" value="3" /> नगर परिषद / Municipality</label>
+            <label><input type="radio" name="localBodyType" value="4" /> नगर पंचायत / Town Panchayat</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="wardNo">Ward No. *</label>
+          <input type="text" id="wardNo" required />
+        </div>
+
+        <div class="clsubbox">
+          <label for="village">Village *</label>
+          <input type="text" id="village" required />
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="postOffice">Post Office *</label>
+          <input type="text" id="postOffice" required />
+        </div>
+
+        <div class="clsubbox">
+          <label for="policeStation">Police Station *</label>
+          <select id="policeStation" required>
+            <option value="">Please Select</option>
+            <option value="konch/कोंच">konch/कोंच</option>
+            <option value="OtherPS">OtherPS</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="pincode">Pin Code *</label>
+          <input type="text" id="pincode" required />
+        </div>
+
+        <div class="clsubbox">
+          <label for="photoPath">Self attested photograph of applicant *</label>
+          <input type="file" id="photoPath" accept="image/*" required />
+        </div>
+      </div>
+
+      <div class="clbox">
+        <div class="clsubbox">
+          <label for="aadharPath">Self attested Aadhaar Card (PDF, &lt; 200 KB) *</label>
+          <input type="file" id="aadharPath" accept="application/pdf" required />
+        </div>
+      </div>
+
+      <hr />
+    </div>
+
+
+
+
+
+
+
+
+    <!-- FOR RESIDENT CERTIFICATE APPLY -->
+
+    <div class="section">
+
+      <label>Type of Residence *</label>
+      <div id="residenceType">
+        <label><input type="radio" name="residenceType" value="Permanent" required /> स्थायी</label>
+        <label><input type="radio" name="residenceType" value="Temporary" /> अस्थायी</label>
+      </div>
+    </div>
+
+    <!-- FOR INCOME CERTIFICATE APPLY  -->
+
+    <div class="section">
+      <h2>For Income Certificate</h2>
+      <!-- ===== Profession (पेशा) ===== -->
+      <div class="tdata">
+        <label class="lbl" for="17207" style="font-family:Arial;font-size:14px;color:#000;width:90%;">
+          पेशा / Profession
+          <span class="mandatory">*</span>
+        </label>
+        <div class="cont" style="margin-left:2%;width:83%;">
+          <select id="profession" name="profession" class="searchDrop" tabindex="46" style="width:83%;"
+            data-datatype="dropDown" data-groupno="30" required>
+            <option value="">Please Select</option>
+            <option value="1">छात्र / Student</option>
+            <option value="2">सरकारी सेवा / Govt. Service</option>
+            <option value="3">निजी सेवा / Private Service</option>
+            <option value="4">व्यापार / Business</option>
+            <option value="5">किसान / Farmer</option>
+            <option value="6">गृहिणी / Housewife</option>
+            <option value="7">अन्य / Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ===== Income Amount (वार्षिक आय) ===== -->
+
+      <div class="tdata">
+        <label class="lbl" for="incomeAmount" style="font-family:Arial;font-size:14px;color:#000;width:90%;">
+          वार्षिक आय (Annual Income)
+          <span class="mandatory">*</span>
+        </label>
+        <div class="cont" style="margin-left:2%;width:83%;">
+          <input type="number" id="incomeAmount" name="incomeAmount" placeholder="Enter your annual income "
+            style="width:83%;padding:5px;font-size:14px;" required />
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="section">
+
+      <h2>For Cast</h2>
+  
+      <div class="form-section" style="background:#FFFAE3; padding:10px; border-radius:8px; font-family:Arial;">
+  
+  
+        <!-- Profession -->
+        <label for="17202">पेशा / Profession <span style="color:red">*</span></label>
+        <select id="17202" name="17202" required style="width:100%;">
+          <option value="">Please Select</option>
+          <option value="1">छात्र / Student</option>
+          <option value="2">सरकारी सेवा / Govt. Service</option>
+          <option value="3">निजी सेवा / Private Service</option>
+          <option value="4">व्यापार / Business</option>
+          <option value="5">किसान / Farmer</option>
+          <option value="6">गृहिणी / Housewife</option>
+          <option value="7">अन्य / Other</option>
+        </select>
+  
+        <!-- Other Profession -->
+        <div id="otherProfessionDiv" style="display:none; margin-top:8px;">
+          <label for="56928">यदि अन्य, कृपया उल्लेख करें / Please specify if other <span
+              style="color:red">*</span></label>
+          <input type="text" id="56928" name="56928" maxlength="99" style="width:100%;">
+        </div>
+  
+        <!-- Category -->
+        <label for="17191">वर्ग / Category <span style="color:red">*</span></label>
+        <select id="17191" name="17191" required style="width:100%; margin-bottom:10px;">
+          <option value="">Please Select</option>
+          <option value="1">अत्यंत पिछड़ा वर्ग (अनुसूची-1)</option>
+          <option value="2">पिछड़ा वर्ग (अनुसूची-2)</option>
+          <option value="3">अनुसूचित जाति</option>
+          <option value="4">अनुसूचित जनजाति</option>
+          <option value="5">गैर आरक्षित</option>
+        </select>
+  
+        <!-- Caste (Dynamic) -->
+        <!-- <label for="41552">जाति / Caste <span style="color:red">*</span></label>
+        <select id="41552" name="41552" required style="width:100%;">
+          <option value="">Please Select</option>
+        </select> -->
+
+        <div id="casteContainer">
+          <label for="41552">Caste / जाति *</label>
+          <select id="41552">
+            <option value="">Please Select</option>
+          </select>
+        </div>
+  
+  
+      </div>
+    </div>
+
+
+
+    <br />
+    <button type="submit">Submit</button>
+  </form>
+
+
+  <h3>Form Data JSON Output:</h3>
+  <pre id="output"></pre>
+
+  <h3>Saved Applications</h3>
+
+  <div class="clbox">
+
+    <div class="clsubbox">
+      <label for="viewold" style="margin-left:10px;">Saved Data:</label>
+      <select id="savedList" style="width:300px;">
+        <option value=""> Select Saved Application </option>
+      </select>
+      <button id="viewBtn" type="button">View</button>
+      <button id="deleteBtn" type="button">Delete Selected</button>
+    </div>
+  
+    <div class="clsubbox">
+  
+      <!-- ✅ NEW: Apply For selection -->
+      <label for="applyFor" style="margin-left:10px;">Apply For:</label>
+      <select id="applyForSaved" style="width:180px;">
+        <option value="">-- Select Certificate --</option>
+        <option value="resident">Resident Certificate</option>
+        <option value="caste">Caste Certificate</option>
+        <option value="income">Income Certificate</option>
+      </select>
+    
+      <!-- ✅ Run saved JSON in Python -->
+      <button id="runSavedBtn" type="button">Run in Python</button>
+    </div>
+  </div>
+
+  <pre id="savedOutput"></pre>
+
+
+
+
+
+
+
+
+  <!-- to select cast -->
+
+  <script>
+    // Predefined caste lists for each category
+    const casteOptions = {
+      "1": `
+      <option value="1">Kapadia / कपरिया</option>
+      <option value="2">Kanu / कानू</option>
+      <option value="4">Kalandar / कलन्दर</option>
+      <option value="5">Kochh / कोछ</option>
+      <option value="6">Kurmi (Mahto) (Jharkhand autonomous area) / कुर्मी (महतो) झारखंड स्वशासी क्षेत्र</option>
+      <option value="7">Kewat (Kaut) / केवट (कउट)</option>
+      <option value="8">Kadar / कादर</option>
+      <option value="9">Kaura / कोरा</option>
+      <option value="10">Korku / कोरकू</option>
+      <option value="11">Kaibart / केवर्त</option>
+      <option value="13">Khatwa / खटवा</option>
+      <option value="15">Khatouri / खतौरी</option>
+      <option value="16">Khangar / खंगर</option>
+      <option value="17">Khatik / खटिक</option>
+      <option value="18">Khelta / खेलटा</option>
+      <option value="21">Gorhi (Chhabi) / गोड़ी (छावी)</option>
+      <option value="22">Gangai (Ganesh) / गंगई (गणेश)</option>
+      <option value="23">Gangota / गंगोता</option>
+      <option value="25">Gandharb / गंधर्व</option>
+      <option value="26">Gulgulia / गुलगुलिया</option>
+      <option value="28">Chain / चांय</option>
+      <option value="29">Chapota / चपोता</option>
+      <option value="30">Chandrabansi (Kahar, Kamkar) / चन्द्रवंशी(कहार, कमकर)</option>
+      <option value="31">Tikulhar / टिकुलहार</option>
+      <option value="32">Dhekaru / ढेकारू</option>
+      <option value="33">Tanti (Tatwa)/तांती(ततवा)</option>
+      <option value="34">Tamaria / तमरिया</option>
+      <option value="35">Turha / तुरहा</option>
+      <option value="36">Tiar / तियर</option>
+      <option value="38">Dhanuk / धानुक</option>
+      <option value="39">Dhamin / धामिन</option>
+      <option value="40">Dhimar / धीमर</option>
+      <option value="41">Dhanwar / धनवार</option>
+      <option value="42">Nonia / नोनिया</option>
+      <option value="44">Nai / नाई</option>
+      <option value="45">Namsudar / नामशुद्र</option>
+      <option value="46">Pandi / पाण्डी</option>
+      <option value="47">Pal (Bherihar, Gareri) / पाल (भेड़िहार, गड़ेरी)</option>
+      <option value="48">Pradhan / प्रधान</option>
+      <option value="49">Pingania / पिनगनिया</option>
+      <option value="50">Pahira / पहिरा</option>
+      <option value="51">Bari / वारी</option>
+      <option value="52">Beldar / बेलदार</option>
+      <option value="53">Bind / बिन्द</option>
+      <option value="55">Shekhra / शेखड़ा</option>
+      <option value="56">Bagdi / बागदी</option>
+      <option value="57">Bhuiyar / भुईयार</option>
+      <option value="58">Bhar / भार</option>
+      <option value="60">Bhaskar / भास्कर</option>
+      <option value="61">Mali (Malakar) / माली (मालाकार)</option>
+      <option value="62">Mangar / मांगर</option>
+      <option value="63">Madar / मदार</option>
+      <option value="64">Mallah / मल्लाह</option>
+      <option value="65">Majhwar / मझवार</option>
+      <option value="66">Markandey / मारकन्डे</option>
+      <option value="67">Moriyari / मोरियारी</option>
+      <option value="68">Malar (Malhor) / मलार (मालहोर)</option>
+      <option value="69">Molik / मौलिक</option>
+      <option value="70">Rajdhobi / राजधोबी</option>
+      <option value="71">Rajbhar / राजभर</option>
+      <option value="72">Rangwa / रंगवा</option>
+      <option value="73">Banpar / वनपर</option>
+      <option value="75">Shota (Shota) / सौटा (सोता)</option>
+      <option value="76">Sang-Trash (for Nawada district only) / संतराश (केवल नवादा जिले के लिए)</option>
+      <option value="78">Aghouri / अघोरी</option>
+      <option value="79">Abdal / अबदल</option>
+      <option value="80">Kasab (kasai) (Muslim) / कसाब (कसाई) (मुस्लिम)</option>
+      <option value="81">Chik (Muslim) / चीक (मुस्लिम)</option>
+      <option value="82">Dafali (Muslim) / डफाली (मुस्लिम)</option>
+      <option value="83">Dhunia (Muslim) / धुनिया (मुस्लिम)</option>
+      <option value="84">Dhobi (Muslim) / धोबी (मुस्लिम)</option>
+      <option value="85">Nut (Muslim) / नट (मुस्लिम)</option>
+      <option value="86">Pamaria (Muslim) / पमरिया (मुस्लिम)</option>
+      <option value="87">Bhathiara (Muslim) / भठियारा (मुस्लिम)</option>
+      <option value="88">Bhat (Muslim) / भाट (मुस्लिम)</option>
+      <option value="89">Mehtar,Lalbegia,Halalkhor, Bhangi (Muslim) / मेहतर, लालबेगीया, हलालखोर, भंगी(मुस्लिम)</option>
+      <option value="90">Miriasin (Muslim) / मिरियासीन, (मुस्लिम)</option>
+      <option value="91">Madari (Muslim) / मदारी (मुस्लिम)</option>
+      <option value="92">Meershikar (Muslim) / मोरशिकार (मुस्लिम)</option>
+      <option value="93">Saeen/Fakir/Diwan/Madar (Muslim) / साई/फकीर/दिवान/मदार (मुस्लिम)</option>
+      <option value="94">Momin (Muslim)(Julaha,Ansari) / मोमिन (मुस्लिम) (जुलाहा,अंसारी)</option>
+      <option value="95">Amat / अमात</option>
+      <option value="96">Churihar (Muslim) / चूड़ीहार (मुस्लिम)</option>
+      <option value="97">Prajapati (Kumhar) / प्रजापति (कुम्हार)</option>
+      <option value="98">Raeen or Kunjara (Muslim) / राईन या कुंजरा (मुस्लिम)</option>
+      <option value="99">Soyar / सोयर</option>
+      <option value="100">Thakurai (Muslim) / ठकुराई (मुस्लिम)</option>
+      <option value="101">Nagar / नागर</option>
+      <option value="102">Shershahbadi / शेरशाहबादी</option>
+      <option value="103">Bakkho (Muslim) / बक्खो (मुस्लिम)</option>
+      <option value="104">Adrakhi / अदरखी</option>
+      <option value="105">Chhipi / छीपी</option>
+      <option value="106">Tili / तिली</option>
+      <option value="107">Idrisi Or Darji (Muslim) / इदरीसी या दर्जी (मुस्लिम)</option>
+      <option value="108">Saikalgar (Sikalgar) (Muslim) / सैकलगर (सिकलगर) (मुस्लिम)</option>
+      <option value="109">Rangrej (Muslim) / रंगरेज (मुस्लिम)</option>
+      <option value="110">Sinduria Bania,Kaithal Vaishya,Kath Bania / सिंदुरिया बनिया,कैथल वैश्य, कथबनिया</option>
+      <option value="111">Mukeri (Muslim) / मुकेरी (मुस्लिम)</option>
+      <option value="112">Itfarosh,Itafarosh,Gadheri,Itpaj Ibrahimi (Muslim) / ईटफरोश, ईटाफरोश,गदहेड़ी,ईटपज इब्राहिमी
+        (मुस्लिम)</option>
+      <option value="113">Barhi / बढ़ई</option>
+      <option value="114">Patwa / पटवा</option>
+      <option value="115">Kamar (Lohar and Karmkar) / कमार (लोहार और कर्मकार)</option>
+      <option value="116">Dewhar / देवहार</option>
+      <option value="351">Samari Vaishya / सामरी वैश्य</option>
+      <option value="353">Haluwai / हलुवाई</option>
+      <option value="354">Pairgha,Parihar / पैरघा,परिहार</option>
+      <option value="355">Jaga / जागा</option>
+      <option value="356">Laheri / लहेड़ी</option>
+      <option value="357">Rajbanshi (Risia,Deshiya or Polia) / राजवंशी( रिसिया,देशिया या पोलिया)</option>
+      <option value="358">Kulhaiya / कुल्हैया</option>
+      <option value="361">Awadh Bania / अवध बनिया</option>
+      <option value="362">Barai, Tamoli (Chaurasia) / बरई, तमोली (चौरसिया)</option>
+      <option value="363">Teli / तेली</option>
+      <option value="364">Dangi / दांगी</option>
+    `,
+      "2": `
+        <option value="118">Kagji / कागजी</option>
+        <option value="120">Kushwaha (Koiri) / कुशवाहा (कोईरी)</option>
+        <option value="121">Kosta / कोस्ता</option>
+        <option value="122">Gaddi / गद्दी</option>
+        <option value="123">Ghatwar / घटवार</option>
+        <option value="125">Chanau / चनउ</option>
+        <option value="126">Jadupatia / जदुपतिया</option>
+        <option value="127">Jogi (jugi) / जोगी (जुगी)</option>
+        <option value="131">Nalband (Muslim) / नालबंद (मुस्लिम)</option>
+        <option value="133">Partha / परथा</option>
+        <option value="136">Bania / बनिया</option>
+        <option value="138">Yadav / यादव</option>
+        <option value="141">Rautia / रौतिया</option>
+        <option value="144">Shivhari / शिवहरी</option>
+        <option value="145">Sonar / सोनार</option>
+        <option value="146">Sutradhar / सूत्रधार</option>
+        <option value="147">Sukiar / सुकियार</option>
+        <option value="149">Isai Dharmawalambi (Harijan) / ईसाई धर्मावलंबी (हरिजन)</option>
+        <option value="150">Ishai Dharmawalambi (Anya Pichari Jati) / ईसाई धर्मावलंबी (अन्य पिछड़ी जाति)</option>
+        <option value="151">Kurmi / कुर्मी</option>
+        <option value="152">Bhaat,Bhat,Brahmbhat,Rajbhat (Hindu) / भाट,भट,ब्रह्मभट,राजभट (हिन्दू)</option>
+        <option value="155">Jat (Hindu) / जट (हिन्दू) (सहरसा, सुपौल, मधेपुरा और अररिया जिलों के लिए)</option>
+        <option value="156">Jat (Muslim) / जट (मुस्लिम) )(मधुबनी, दरभंगा, सीतामढी, खगडिया एवं अररिया जिलों के लिए)</option>
+        <option value="157">Madaria (Muslim) / मडरिया (मुस्लिम) (मात्र भागलपुर जिला के सन्हौला प्रखंड एवं बांका जिला के
+          धोरैया प्रखण्ड के लिए)</option>
+        <option value="158">Donwar / दोनवार (केवल मधुबनी और सुपौल जिलों के लिए)</option>
+        <option value="159">Surjapuri Muslim / सुरजापुरी मुस्लिम (शेख, सैयद, मल्लिक, मोगल, पठान को छोडकर) (केवल पूर्णियां,
+          कटिहार, किशनगंज एवं अररिया जिलों के लिए)</option>
+        <option value="160">Mallik (Muslim) / मलिक (मुस्लिम)</option>
+        <option value="350">Sainthwar / सैंथवार</option>
+        <option value="352">Goswami,Sanyasi,Atith,Athit,Gosai,Jati,Yati / गोस्वामी, सन्यासी,अतिथ,अथीत, गोसाई, जति,यति
+        </option>
+        <option value="372">Kinnar,Kothi,Hijra,Transgender,Third Gender / किन्नर,कोथी,हिजड़ा,ट्रांसजेंडर (थर्ड जेंडर)
+        </option>
+    `,
+      "3": `
+        <option value="161">Bantar / बंतार</option>
+        <option value="162">Bauri / बौरी</option>
+        <option value="163">Bhogta / भोगता</option>
+        <option value="164">Bhuiya / भुईया</option>
+        <option value="166">Chamar, Mochi, Chamar-Rabidas, Chamar-Ravidas, Chamar-Rohidas, Charmarkar / चमार, मोची, चमार -
+          रबिदास, चमार-रविदास, चमार- रोहिदास, चर्मरकार</option>
+        <option value="167">Chaupal / चौपाल</option>
+        <option value="168">Dabgar / दबगर</option>
+        <option value="169">Dhobi, Rajak / धोबी, रजक</option>
+        <option value="170">Dom, Dhangad, Bansphor, Dharikar, Dharkar, Domra / डोम, धनगड़, बांसफोड़, धारीकर, धरकर, डोमरा
+        </option>
+        <option value="171">Dusadh, Dhari, Dharhi / दुसाध, धारी, धारही</option>
+        <option value="172">Ghasi / घासी</option>
+        <option value="173">Halalkhor / हलालखोर</option>
+        <option value="174">Hari,Mehtar, Bhangi / हरि, मेहतर, भंगी</option>
+        <option value="175">Kanjar / कंजर</option>
+        <option value="176">Kurariar / कुररियार</option>
+        <option value="177">Lalbegi / लालबेगी</option>
+        <option value="178">Musahar / मुसहर</option>
+        <option value="179">Nat / नट</option>
+        <option value="180">Pan, Sawasi, Panr / पान, सवासी, पानर</option>
+        <option value="181">Pasi / पासी</option>
+        <option value="182">Rajwar / रजवार</option>
+        <option value="183">Turi / तुरी</option>
+    `,
+      "4": `
+        <option value="184">Asur, Agaria / असुर, अगरिया</option>
+        <option value="185">Baiga / बेगा</option>
+        <option value="186">Bedia / बेदिया</option>
+        <option value="188">Binjhia / बिंझिया</option>
+        <option value="189">Birhor / बिरहोर</option>
+        <option value="190">Birjia / विरजिया</option>
+        <option value="191">Chero / चेरो</option>
+        <option value="192">Chik Baraik / चिक बराइक</option>
+        <option value="193">Gond / गोंड</option>
+        <option value="194">Gorait / गोराइत</option>
+        <option value="195">Ho / हो</option>
+        <option value="196">Karmali / करमाली</option>
+        <option value="197">Kharia, Dhelki Kharia, Dudh Kharia, Hill Kharia / खरिया, ढ़ेलकी खड़िया, दूध खड़िया, हिल खड़िया
+        </option>
+        <option value="198">Kharwar / खरवार</option>
+        <option value="199">Khond / खोंड</option>
+        <option value="200">Kisan, Nagesia / किसान, नागेसिया</option>
+        <option value="201">Kora, Mudi-Kora / कोरा, मुडी- कोरा</option>
+        <option value="202">Korwa / कोरवा</option>
+        <option value="203">Lohara, Lohra / लोहारा, लोहरा</option>
+        <option value="204">Mahli / माहली</option>
+        <option value="205">Mal Paharia, Kumarbhag Paharia / माल पहरिया, कुमारभाग पहारिया</option>
+        <option value="206">Munda, Patar / मुण्डा, पातार</option>
+        <option value="207">Dhangar (Oraon) / धांगड़ (उरांव)</option>
+        <option value="208">Parhaiya / परहया</option>
+        <option value="209">Santal / संथाल</option>
+        <option value="210">Sauria Paharia / सोरिया पहाडिया</option>
+        <option value="211">Savar / सावर</option>
+        <option value="212">Kawar / कवार</option>
+        <option value="213">Kol / कोल</option>
+        <option value="214">Tharu / थारू</option>
+        <option value="216">Banjara / बनजारा</option>
+        <option value="217">Bathudi / बठुडी</option>
+    `
+    };
+
+
+      // Elements
+  const categorySelect = document.getElementById("17191"); // Category (like SC/ST/OBC/Unreserved)
+  const casteContainer = document.getElementById("casteContainer"); // A wrapper div for caste field
+  const casteSelect = document.getElementById("41552"); // Dropdown
+  let casteInput; // Will hold our text input when needed
+
+  // Listen for category change
+  categorySelect.addEventListener("change", function () {
+    const selected = this.value.trim();
+
+    // Case 1️⃣: If Unreserved / गैर आरक्षित selected
+    if (selected === "0" || selected === "unreserved" || selected === "गैर आरक्षित") {
+      // Remove dropdown if present
+      casteSelect.style.display = "none";
+
+      // Add input box if not already created
+      if (!casteInput) {
+        casteInput = document.createElement("input");
+        casteInput.type = "text";
+        casteInput.id = "manualCaste";
+        casteInput.placeholder = "Enter your caste (if applicable)";
+        casteInput.required = false;
+        casteContainer.appendChild(casteInput);
+      } else {
+        casteInput.style.display = "block";
+      }
+    } 
+    else {
+      // Case 2️⃣: Reserved categories — show dropdown again
+      casteSelect.style.display = "block";
+      casteSelect.innerHTML = casteOptions[selected] || '<option value="">Please Select</option>';
+
+      // Hide input box if present
+      if (casteInput) casteInput.style.display = "none";
+    }
+    });
+
+
+    // // Change caste list based on category selection
+    // document.getElementById("17191").addEventListener("change", function () {
+    //   const casteSelect = document.getElementById("41552");
+    //   const selected = this.value;
+    //   casteSelect.innerHTML = casteOptions[selected] || '<option value="">Please Select</option>';
+    // });
+  </script>
+
+<!-- <script>
+
+document.getElementById("runSavedBtn").addEventListener("click", async function () {
+  const savedList = document.getElementById("savedList");
+  const selectedIndex = savedList.selectedIndex;
+  const applyFor = document.getElementById("applyForSaved").value.trim();
+
+  if (selectedIndex <= 0) {
+    alert("⚠️ Please select a saved application first!");
+    return;
+  }
+  if (!applyFor) {
+    alert("⚠️ Please select what you are applying for (Resident, Caste, Income)");
+    return;
+  }
+
+  // ✅ Load from localStorage
+  let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+  let selectedApp = all[selectedIndex - 1];
+
+  // ✅ Send only minimal info to backend
+  try {
+    const res = await fetch("http://127.0.0.1:5000/use_saved", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        filename: selectedApp.fileName || "",      // optional if you use file
+        certificateChoice: applyFor.toLowerCase(), // important: "income" or "residence"
+        updateChoice: "use"
+      })
+    });
+
+    const result = await res.json();
+    alert(result.message || "✅ Saved form sent successfully!");
+    console.log(result);
+  } catch (err) {
+    console.error("❌ Error sending to Python:", err);
+    alert("Error sending saved data to Python server!");
+  }
+});
+
+
+</script>
+
+
+
+
+
+<script>
+  // ✅ Function to load saved applications from localStorage into dropdown
+  function loadSavedApplications() {
+    const savedList = document.getElementById("savedList");
+    savedList.innerHTML = '<option value="">-- Select Saved Application --</option>';
+    const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+    all.forEach((item, index) => {
+      const opt = document.createElement("option");
+      opt.value = index;
+      opt.textContent = `${index + 1}. ${item.applicantName || "Unnamed"} (${item.district || ""})`;
+      savedList.appendChild(opt);
+    });
+  }
+
+  // ✅ Modify your form submit listener to save JSON locally too
+  document.getElementById('residenceForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+    const salutation = document.getElementById('salutation').value;
+    const applicantName = document.getElementById('applicantName').value.trim();
+    const applicantNameHindi = document.getElementById('applicantNameHindi').value.trim();
+    const fatherName = document.getElementById('fatherName').value.trim();
+    const fatherNameHindi = document.getElementById('fatherNameHindi').value.trim();
+    const motherName = document.getElementById('motherName').value.trim();
+    const motherNameHindi = document.getElementById('motherNameHindi').value.trim();
+    const husbandName = document.getElementById('husbandName').value.trim();
+    const husbandNameHindi = document.getElementById('husbandNameHindi').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const state = document.getElementById('state').value;
+    const district = document.getElementById('district').value;
+    const subdivision = document.getElementById('subdivision').value;
+    const block = document.getElementById('block').value;
+    const localBodyType = document.querySelector('input[name="localBodyType"]:checked')?.value || "";
+    const wardNo = document.getElementById('wardNo').value.trim();
+    const village = document.getElementById('village').value.trim();
+    const postOffice = document.getElementById('postOffice').value.trim();
+    const policeStation = document.getElementById('policeStation').value;
+    const pincode = document.getElementById('pincode').value.trim();
+    const photoInput = document.getElementById('photoPath');
+    const photoPath = photoInput.files.length > 0 ? photoInput.files[0].name : "";
+    const applyFor = document.getElementById('applyFor').value;
+    const profession = document.getElementById('profession').value;
+    const annualAmount = document.getElementById('incomeAmount').value;
+    
+
+
+    // ✅ Get Aadhaar filename (and check size)
+    const aadharInput = document.getElementById('aadharPath');
+    let aadharPath = "";
+    if (aadharInput.files.length > 0) {
+      const file = aadharInput.files[0];
+      if (file.type !== "application/pdf") {
+        alert("⚠️ Please upload a valid PDF file for Aadhaar!");
+        return;
+      }
+      if (file.size > 200 * 1024) {
+        alert("⚠️ Aadhaar file must be less than 200 KB!");
+        return;
+      }
+      aadharPath = file.name;
+    }
+
+    const residenceType = document.querySelector('input[name="residenceType"]:checked')?.value || "";
+
+    const formDataJSON = {
+      gender, salutation, applicantName, applicantNameHindi,
+      fatherName, fatherNameHindi, motherName, motherNameHindi,
+      husbandName, husbandNameHindi, mobile, email, state, district,
+      subdivision, block, localBodyType, wardNo, village, postOffice,
+      policeStation, pincode, photoPath,aadharPath, residenceType,applyFor,profession,
+      annualAmount
+    };
+
+    document.getElementById('output').textContent = JSON.stringify(formDataJSON, null, 2);
+
+    // ✅ Save to localStorage
+    let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+    all.push(formDataJSON);
+    localStorage.setItem("residenceApplications", JSON.stringify(all));
+
+    loadSavedApplications();
+
+    // ✅ NEW — Send to Python Flask immediately
+    fetch("http://127.0.0.1:5000/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formDataJSON)
+    })
+    .then(res => res.json())
+    .then(r => console.log("✅ Sent to Python:", r))
+    .catch(err => console.error("❌ Error sending to Python:", err));
+
+    alert("✅ Application saved & sent to Python automation!");
+  });
+
+  // ✅ Handle "View" button click
+  document.getElementById("viewBtn").addEventListener("click", function() {
+    const index = document.getElementById("savedList").value;
+    const savedOutput = document.getElementById("savedOutput");
+    if (index === "") {
+      savedOutput.textContent = "Please select an application first.";
+      return;
+    }
+    const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+    savedOutput.textContent = JSON.stringify(all[index], null, 2);
+  });
+
+  // ✅ Handle "Delete" button click
+  document.getElementById("deleteBtn").addEventListener("click", function() {
+    const index = document.getElementById("savedList").value;
+    if (index === "") {
+      alert("Please select an application to delete.");
+      return;
+    }
+    let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+    all.splice(index, 1);
+    localStorage.setItem("residenceApplications", JSON.stringify(all));
+    loadSavedApplications();
+    document.getElementById("savedOutput").textContent = "";
+    alert("🗑️ Application deleted.");
+  });
+
+  // ✅ NEW — Run Saved in Python
+  document.getElementById("runSavedBtn").addEventListener("click", function() {
+    const index = document.getElementById("savedList").value;
+    if (index === "") return alert("Select a saved application first!");
+
+    const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+    const selected = all[index];
+
+    fetch("http://127.0.0.1:5000/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(selected)
+    })
+    .then(res => res.json())
+    .then(r => alert("✅ Sent saved form to Python automation!"))
+    .catch(err => alert("❌ Error sending to Python: " + err));
+  });
+
+  // ✅ Load saved list on page load
+  window.addEventListener("load", loadSavedApplications);
+</script> -->
+
+
+
+
+
+
+
+
+
+  <script>
+    // ✅ Load saved applications into dropdown
+    function loadSavedApplications() {
+      const savedList = document.getElementById("savedList");
+      savedList.innerHTML = '<option value="">-- Select Saved Application --</option>';
+      const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+      all.forEach((item, index) => {
+        const opt = document.createElement("option");
+        opt.value = index;
+        opt.textContent = `${index + 1}. ${item.applicantName || "Unnamed"} (${item.district || ""})`;
+        savedList.appendChild(opt);
+      });
+    }
+
+    // ✅ On form submit → Save + Send to Python Flask
+    document.getElementById('residenceForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formDataJSON = collectFormData();
+      document.getElementById('output').textContent = JSON.stringify(formDataJSON, null, 2);
+
+      // Save to localStorage
+      let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+      all.push(formDataJSON);
+      localStorage.setItem("residenceApplications", JSON.stringify(all));
+
+      loadSavedApplications();
+
+      // Send to Flask server
+      try {
+        const res = await fetch("http://127.0.0.1:5000/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formDataJSON)
+        });
+        const result = await res.json();
+        alert(result.message || "✅ Application submitted successfully!");
+      } catch (err) {
+        console.error("❌ Error sending:", err);
+        alert("Error sending data to Python!");
+      }
+    });
+
+    // ✅ Run Saved Data
+    document.getElementById("runSavedBtn").addEventListener("click", async function () {
+      const savedList = document.getElementById("savedList");
+      const selectedIndex = savedList.selectedIndex;
+      const applyFor = document.getElementById("applyForSaved").value.trim();
+
+      if (selectedIndex <= 0) return alert("⚠️ Please select a saved application first!");
+      if (!applyFor) return alert("⚠️ Please select what you are applying for (Resident, Caste, Income)!");
+
+      const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+      const selectedApp = all[selectedIndex - 1];
+
+      try {
+        const res = await fetch("http://127.0.0.1:5000/use_saved", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            data: selectedApp,
+            certificateChoice: applyFor.toLowerCase()
+          })
+        });
+
+        const result = await res.json();
+        alert(result.message || "✅ Saved data sent successfully!");
+      } catch (err) {
+        console.error("❌ Error:", err);
+        alert("Error sending saved data to Python!");
+      }
+    });
+
+    // ✅ Delete saved record
+    document.getElementById("deleteBtn").addEventListener("click", function () {
+      const index = document.getElementById("savedList").value;
+      if (index === "") return alert("Please select an application to delete.");
+      let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+      all.splice(index, 1);
+      localStorage.setItem("residenceApplications", JSON.stringify(all));
+      loadSavedApplications();
+      document.getElementById("savedOutput").textContent = "";
+      alert("🗑️ Application deleted.");
+    });
+
+    // ✅ View saved JSON
+    document.getElementById("viewBtn").addEventListener("click", function () {
+      const index = document.getElementById("savedList").value;
+      if (index === "") return alert("Select a saved record first!");
+      const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
+      document.getElementById("savedOutput").textContent = JSON.stringify(all[index], null, 2);
+    });
+
+    // ✅ Helper function to collect form data
+    function collectFormData() {
+      const gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+      const salutation = document.getElementById('salutation').value;
+      const applicantName = document.getElementById('applicantName').value.trim();
+      const applicantNameHindi = document.getElementById('applicantNameHindi').value.trim();
+      const fatherName = document.getElementById('fatherName').value.trim();
+      const fatherNameHindi = document.getElementById('fatherNameHindi').value.trim();
+      const motherName = document.getElementById('motherName').value.trim();
+      const motherNameHindi = document.getElementById('motherNameHindi').value.trim();
+      const husbandName = document.getElementById('husbandName').value.trim();
+      const husbandNameHindi = document.getElementById('husbandNameHindi').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const state = document.getElementById('state').value;
+      const district = document.getElementById('district').value;
+      const subdivision = document.getElementById('subdivision').value;
+      const block = document.getElementById('block').value;
+      const localBodyType = document.querySelector('input[name="localBodyType"]:checked')?.value || "";
+      const wardNo = document.getElementById('wardNo').value.trim();
+      const village = document.getElementById('village').value.trim();
+      const postOffice = document.getElementById('postOffice').value.trim();
+      const policeStation = document.getElementById('policeStation').value;
+      const pincode = document.getElementById('pincode').value.trim();
+      const photoPath = document.getElementById('photoPath').files[0]?.name || "";
+      const aadharPath = document.getElementById('aadharPath').files[0]?.name || "";
+      const residenceType = document.querySelector('input[name="residenceType"]:checked')?.value || "";
+      const applyFor = document.getElementById('applyFor').value;
+      const profession = document.getElementById('profession').value;
+      const annualAmount = document.getElementById('incomeAmount').value;
+      const casteProfession = document.getElementById('17202').value;
+      const casteCategory = document.getElementById('17191').value;
+      const castejati = document.getElementById('41552').value;
+
+      return {
+        gender, salutation, applicantName, applicantNameHindi,
+        fatherName, fatherNameHindi, motherName, motherNameHindi,
+        husbandName, husbandNameHindi, mobile, email, state, district,
+        subdivision, block, localBodyType, wardNo, village, postOffice,
+        policeStation, pincode, photoPath, aadharPath, residenceType,
+        applyFor, profession, annualAmount, casteCategory,casteProfession,castejati
+      };
+    }
+
+    // ✅ Load saved list when page loads
+    window.addEventListener("load", loadSavedApplications);
+  </script>
+
+
+
+
+
+
+  <script>
+    // Simple function for district/subdivision/block cascading example - can be expanded
+    // For demo, no elaborate cascading implemented here
+
+    document.getElementById('residenceForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // collect all input values
+      const gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+      const salutation = document.getElementById('salutation').value;
+      const applicantName = document.getElementById('applicantName').value.trim();
+      const applicantNameHindi = document.getElementById('applicantNameHindi').value.trim();
+      const fatherName = document.getElementById('fatherName').value.trim();
+      const fatherNameHindi = document.getElementById('fatherNameHindi').value.trim();
+      const motherName = document.getElementById('motherName').value.trim();
+      const motherNameHindi = document.getElementById('motherNameHindi').value.trim();
+      const husbandName = document.getElementById('husbandName').value.trim();
+      const husbandNameHindi = document.getElementById('husbandNameHindi').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const state = document.getElementById('state').value;
+      const district = document.getElementById('district').value;
+      const subdivision = document.getElementById('subdivision').value;
+      const block = document.getElementById('block').value;
+      const localBodyType = document.querySelector('input[name="localBodyType"]:checked')?.value || "";
+      const wardNo = document.getElementById('wardNo').value.trim();
+      const village = document.getElementById('village').value.trim();
+      const postOffice = document.getElementById('postOffice').value.trim();
+      const policeStation = document.getElementById('policeStation').value;
+      const pincode = document.getElementById('pincode').value.trim();
+      // Photo path will just give file name for JSON representation
+      const photoInput = document.getElementById('photoPath');
+      const photoPath = photoInput.files.length > 0 ? photoInput.files[0].name : "";
+      const applyFor = document.getElementById('applyFor').value;
+      const profession = document.getElementById('profession').value;
+      const annualAmount = document.getElementById('incomeAmount').value;
+      const casteProfession = document.getElementById('17202').value;
+      const casteCategory = document.getElementById('17191').value;
+      const castejati = document.getElementById('41552').value;
+
+
+
+      // ✅ Get Aadhaar filename (and check size)
+      const aadharInput = document.getElementById('aadharPath');
+      let aadharPath = "";
+      if (aadharInput.files.length > 0) {
+        const file = aadharInput.files[0];
+        if (file.type !== "application/pdf") {
+          alert("⚠️ Please upload a valid PDF file for Aadhaar!");
+          return;
+        }
+        if (file.size > 200 * 1024) {
+          alert("⚠️ Aadhaar file must be less than 200 KB!");
+          return;
+        }
+        aadharPath = file.name;
+      }
+
+
+      const residenceType = document.querySelector('input[name="residenceType"]:checked')?.value || "";
+
+      // Construct the JSON object as per your required format
+      const formDataJSON = {
+        gender,
+        salutation,
+        applicantName,
+        applicantNameHindi,
+        fatherName,
+        fatherNameHindi,
+        motherName,
+        motherNameHindi,
+        husbandName,
+        husbandNameHindi,
+        mobile,
+        email,
+        state,
+        district,
+        subdivision,
+        block,
+        localBodyType,
+        wardNo,
+        village,
+        postOffice,
+        policeStation,
+        pincode,
+        photoPath,
+        aadharPath,
+        residenceType,
+        applyFor,
+        profession,
+        annualAmount,
+        casteCategory,
+        casteProfession,
+        castejati
+      };
+
+      // Display JSON in the pre tag
+      document.getElementById('output').textContent = JSON.stringify(formDataJSON, null, 2);
+    });
+  </script>
+
+
+  <!-- To translate english into hindi   -->
+  <script>
+    // Simple Google Translate API (unofficial, free usage)
+    async function translateText(text, targetLang = "hi") {
+      if (!text) return "";
+      const response = await fetch(
+        "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=" + targetLang + "&dt=t&q=" + encodeURIComponent(text)
+      );
+      const result = await response.json();
+      return result[0][0][0];
+    }
+
+    // Auto-translate and fill Hindi fields
+    function autoTranslate(sourceId, targetId) {
+      const source = document.getElementById(sourceId);
+      const target = document.getElementById(targetId);
+
+      source.addEventListener("input", async function () {
+        const translated = await translateText(this.value, "hi");
+        target.value = translated;
+      });
+    }
+
+    // Apply for each English → Hindi input pair
+    autoTranslate("applicantName", "applicantNameHindi");
+    autoTranslate("fatherName", "fatherNameHindi");
+    autoTranslate("motherName", "motherNameHindi");
+    autoTranslate("husbandName", "husbandNameHindi");
+
+  </script>
+
+
+
+  <!-- To selet address like district , block , ps -->
+
+  <script>
+    // ✅ Data structure: Gaya subdivisions & blocks
+    const data = {
+      "GAYA/गया": {
+        "GAYA SADAR/गया सदर": [
+          "GAYA TOWN/गया नगर",
+          "BODHGAYA/बोधगया",
+          "MANPUR/मानपुर",
+          "BELAGANJ/बेलागंज",
+          "WAZIRGANJ/वजीरगंज",
+          "TANKUPPA/टंकुप्पा",
+          "FATEHPUR/फ़तेहपुर"
+        ],
+        "NEEMCHAK BATHANI/नीमचक बथानी": [
+          "NEEMCHAK BATHANI/नीमचक बथानी",
+          "KHIZARSARAI/खिज़रसराय"
+        ],
+        "SHERGHATTY/शेरघाटी": [
+          "SHERGHATTI/शेरघाटी",
+          "MOHANCHI/मोहनची",
+          "DOBHI/डोभी",
+          "BUNIYADGANJ/बुनियादगंज"
+        ],
+        "TEKARI/टेकारी": [
+          "TEKARI/टेकारी",
+          "KONCH/कोंच",
+          "GURARU/गुरारू",
+          "PARAIYA/परैया"
+        ]
+      }
+    };
+
+
+    const policeStationsData = {
+      "GAYA/गया": [
+        "Aamas/आमस",
+        "Aanti/ऑती",
+        "Alipur/अलीपुर",
+        "Atri/अतरी",
+        "Bahera/बहेरा",
+        "Bankey Bazar/बॉके बाजार",
+        "Barachatti/बाराचट्टी",
+        "Belaganj/बेलागंज",
+        "Bhadvar/भदवर",
+        "Bodhgaya/बोधगया",
+        "Bodhi Bigha/बोधि विगहा",
+        "Buniyadganj/बुनियादगंज",
+        "Chakand Thana/चाकन्द थाना",
+        "Chandauti/चन्दौती",
+        "Cherki Thana/चेरकी थाना",
+        "Chhakarbandha/छकरबंधा",
+        "Civil lines/सिविल लाईन",
+        "Delha/डेल्हा",
+        "Dhangai/धनगाई",
+        "Dobhi/डोभी",
+        "Dumariya/डुमरिया",
+        "Fatehpur/फतेहपुर",
+        "Guraru/गुरारू",
+        "Gurpa/गुरपा",
+        "Gurua/गुरुआ",
+        "Imamganj/इमामगंज",
+        "Khizersarai/खिजरसराय",
+        "konch/कोंच",
+        "Kothi/कोठी",
+        "Kotwali/कोतवाली",
+        "Lutua/लुटुआ",
+        "Magadh Medical/मगध मेडिकल",
+        "Magadh University/मगध विश्वविद्यालय",
+        "Mahkar/महकार",
+        "Maigra/मैगरा",
+        "Main/मेन",
+        "Mau Thana/मउ थाना",
+        "Mohanpur/मोहनपुर",
+        "Muffasil/मुफसिल",
+        "Nimchak Bathani/नीमचक बथानी",
+        "Pai Bigha OP/पाई बिगहा ओ0पी0",
+        "Panchanpur thana/पंचानपुर थाना",
+        "Paraiya/परैया",
+        "Pura/पुरा",
+        "Rampur/रामपुर",
+        "Raushanganj/रौशनगंज",
+        "Sarbahda Thana/सरबहदा थाना",
+        "Sherghati/शेरघाटी",
+        "Sindhugarh/सिन्धुगंढ़",
+        "Sohail/सोहैल",
+        "Tankuppa Thana/टनकुप्पा थाना",
+        "Tikari/टिकारी",
+        "vishnupad/विष्णुपद",
+        "Wazirganj/वजीरगंज"
+      ],
+
+      // Repeat for other blocks if needed
+      // "NEEMCHAK BATHANI/नीमचक बथानी": [
+      //   "Bodhgaya/बोधगया",
+      //   "Chakand Thana/चाकन्द थाना",
+      //   "Chandauti/चन्दौती",
+      //   "Cherki Thana/चेरकी थाना",
+      //   "Chhakarbandha/छकरबंधा"
+      // ]
+    };
+
+
+
+
+
+    const districtSelect = document.getElementById("district");
+    const subdivisionSelect = document.getElementById("subdivision");
+    const blockSelect = document.getElementById("block");
+    const policeSelect = document.getElementById("policeStation");
+
+    // Load subdivisions when district changes
+    districtSelect.addEventListener("change", function () {
+      subdivisionSelect.innerHTML = '<option value="">Please Select</option>';
+      blockSelect.innerHTML = '<option value="">Please Select</option>';
+      // policeSelect.innerHTML = '<option value="">Please Select</option>';
+
+      const district = this.value;
+      if (data[district]) {
+        Object.keys(data[district]).forEach(sub => {
+          const opt = document.createElement("option");
+          opt.value = sub;
+          opt.textContent = sub;
+          subdivisionSelect.appendChild(opt);
+        });
+      }
+    });
+
+    // Load blocks when subdivision changes
+    subdivisionSelect.addEventListener("change", function () {
+      blockSelect.innerHTML = '<option value="">Please Select</option>';
+      // policeSelect.innerHTML = '<option value="">Please Select</option>';
+
+      const district = districtSelect.value;
+      const subdivision = this.value;
+
+      if (data[district] && data[district][subdivision]) {
+        data[district][subdivision].forEach(block => {
+          const opt = document.createElement("option");
+          opt.value = block;
+          opt.textContent = block;
+          blockSelect.appendChild(opt);
+        });
+      }
+    });
+
+
+
+    districtSelect.addEventListener("change", function () {
+      policeSelect.innerHTML = '<option value="">Please Select</option>'; // reset
+
+      const district = this.value;
+      console.log(district);
+      if (policeStationsData[district]) {
+        policeStationsData[district].forEach(ps => {
+          const opt = document.createElement("option");
+          opt.value = ps;
+          opt.textContent = ps;
+          policeSelect.appendChild(opt);
+        });
+      }
+    });
+
+
+
+  </script>
+
+
+  <!-- (your translate script and cascading district/subdivision scripts remain exactly same) -->
+
+</body>
+
+</html>
