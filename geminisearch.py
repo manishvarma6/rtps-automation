@@ -6,7 +6,7 @@
 # os.environ["GLOG_minloglevel"] = "2"
 
 # # ✅ Initialize Gemini API
-# API_KEY = "AIzaSyDkcOkzFf4a-h8oKkhAGwp-lb1nhYIIsBc"
+# API_KEY = ""
 # genai.configure(api_key=API_KEY)
 
 # def gemini_file_analyze(file_path, prompt="Summarize this file in English."):
@@ -190,4 +190,5 @@ def gemini_file_analyze(file_path, prompt="give me the only number written on th
 # if __name__ == "__main__":
 #     img_file = "captcha.png"  # update your file name
 #     result = gemini_file_analyze(img_file)
+
 #     print("🖼️ Image Result:\n", result)
