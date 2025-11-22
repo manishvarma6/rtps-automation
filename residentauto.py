@@ -90,6 +90,7 @@ def run_browser_automation(data):
         driver.find_element(By.ID, "17290_3").click()
 
     fill_name_with_spaces(driver, "78250", data["applicantName"])
+    time.sleep(0.5)
 
 
 
@@ -97,6 +98,8 @@ def run_browser_automation(data):
     element = driver.find_element(By.ID, "17287")
     element.clear()  
     element.send_keys(data["applicantNameHindi"])  
+    time.sleep(0.5)
+
 
 
     # Father name
@@ -104,11 +107,14 @@ def run_browser_automation(data):
     driver.execute_script("arguments[0].value = arguments[1];", 
                         driver.find_element(By.ID, "78251"), 
                         data["fatherName"])
+    time.sleep(0.5)
+
 
     #father hindi name
     element = driver.find_element(By.ID, "17288")
     element.clear()  
     element.send_keys(data["fatherNameHindi"])  
+    time.sleep(0.5)
 
     #mother name
     # driver.find_element(By.ID, "41565").send_keys(data["motherName"])
@@ -117,6 +123,7 @@ def run_browser_automation(data):
         driver.find_element(By.ID, "41565"),
         data["motherName"].rstrip()
     )
+    time.sleep(0.5)
 
 
 
@@ -124,6 +131,7 @@ def run_browser_automation(data):
     element = driver.find_element(By.ID, "41567")
     element.clear()  
     element.send_keys(data["motherNameHindi"])  
+    time.sleep(0.5)
 
 
 
@@ -133,6 +141,7 @@ def run_browser_automation(data):
     driver.execute_script("arguments[0].value = arguments[1];", 
                         driver.find_element(By.ID, "64876"), 
                         data["husbandName"])
+    time.sleep(0.5)
 
     #husband hindi name
     element = driver.find_element(By.ID, "64877")
@@ -303,10 +312,11 @@ def run_browser_automation(data):
 
     # Residence Type
     if data["residenceType"] == "Permanent":
-        driver.find_element(By.ID, "41566_1").click()
+        driver.find_element(By.ID, "41566_1").click() 
     else:
         driver.find_element(By.ID, "41566_2").click()
 
+    driver.find_element(By.ID, "41566_1").click()
     # # Purpose
     # driver.find_element(By.ID, "90775").send_keys(data["purpose"])
 
