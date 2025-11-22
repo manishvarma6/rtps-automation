@@ -586,8 +586,55 @@
 
 
 
+  <!-- to indicate the size of image and pdf  -->
 
+  <script>
+    // Validate Image (10 KB – 200 KB)
+    document.getElementById('photoPath').addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
 
+      const fileSizeKB = file.size / 1024;
+
+      if (file.type.startsWith('image/') === false) {
+        alert("Please upload only image files!");
+        this.value = "";
+        return;
+      }
+
+      if (fileSizeKB < 20) {
+        alert("Image size must be minimum 10 KB.");
+        this.value = "";
+        return;
+      }
+
+      if (fileSizeKB > 200) {
+        alert("Image size must be less than 200 KB.");
+        this.value = "";
+        return;
+      }
+    });
+
+    // Validate PDF (< 200 KB)
+    document.getElementById('aadharPath').addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const fileSizeKB = file.size / 1024;
+
+      if (file.type !== "application/pdf") {
+        alert("Please upload only PDF file!");
+        this.value = "";
+        return;
+      }
+
+      if (fileSizeKB > 200) {
+        alert("PDF size must be less than 200 KB.");
+        this.value = "";
+        return;
+      }
+    });
+  </script>
 
 
 
@@ -859,207 +906,12 @@
     // });
   </script>
 
-<!-- <script>
-
-document.getElementById("runSavedBtn").addEventListener("click", async function () {
-  const savedList = document.getElementById("savedList");
-  const selectedIndex = savedList.selectedIndex;
-  const applyFor = document.getElementById("applyForSaved").value.trim();
-
-  if (selectedIndex <= 0) {
-    alert("⚠️ Please select a saved application first!");
-    return;
-  }
-  if (!applyFor) {
-    alert("⚠️ Please select what you are applying for (Resident, Caste, Income)");
-    return;
-  }
-
-  // ✅ Load from localStorage
-  let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
-  let selectedApp = all[selectedIndex - 1];
-
-  // ✅ Send only minimal info to backend
-  try {
-    const res = await fetch("http://127.0.0.1:5000/use_saved", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        filename: selectedApp.fileName || "",      // optional if you use file
-        certificateChoice: applyFor.toLowerCase(), // important: "income" or "residence"
-        updateChoice: "use"
-      })
-    });
-
-    const result = await res.json();
-    alert(result.message || "✅ Saved form sent successfully!");
-    console.log(result);
-  } catch (err) {
-    console.error("❌ Error sending to Python:", err);
-    alert("Error sending saved data to Python server!");
-  }
-});
-
-
-</script>
 
 
 
 
 
-<script>
-  // ✅ Function to load saved applications from localStorage into dropdown
-  function loadSavedApplications() {
-    const savedList = document.getElementById("savedList");
-    savedList.innerHTML = '<option value="">-- Select Saved Application --</option>';
-    const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
-    all.forEach((item, index) => {
-      const opt = document.createElement("option");
-      opt.value = index;
-      opt.textContent = `${index + 1}. ${item.applicantName || "Unnamed"} (${item.district || ""})`;
-      savedList.appendChild(opt);
-    });
-  }
-
-  // ✅ Modify your form submit listener to save JSON locally too
-  document.getElementById('residenceForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const gender = document.querySelector('input[name="gender"]:checked')?.value || "";
-    const salutation = document.getElementById('salutation').value;
-    const applicantName = document.getElementById('applicantName').value.trim();
-    const applicantNameHindi = document.getElementById('applicantNameHindi').value.trim();
-    const fatherName = document.getElementById('fatherName').value.trim();
-    const fatherNameHindi = document.getElementById('fatherNameHindi').value.trim();
-    const motherName = document.getElementById('motherName').value.trim();
-    const motherNameHindi = document.getElementById('motherNameHindi').value.trim();
-    const husbandName = document.getElementById('husbandName').value.trim();
-    const husbandNameHindi = document.getElementById('husbandNameHindi').value.trim();
-    const mobile = document.getElementById('mobile').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const state = document.getElementById('state').value;
-    const district = document.getElementById('district').value;
-    const subdivision = document.getElementById('subdivision').value;
-    const block = document.getElementById('block').value;
-    const localBodyType = document.querySelector('input[name="localBodyType"]:checked')?.value || "";
-    const wardNo = document.getElementById('wardNo').value.trim();
-    const village = document.getElementById('village').value.trim();
-    const postOffice = document.getElementById('postOffice').value.trim();
-    const policeStation = document.getElementById('policeStation').value;
-    const pincode = document.getElementById('pincode').value.trim();
-    const photoInput = document.getElementById('photoPath');
-    const photoPath = photoInput.files.length > 0 ? photoInput.files[0].name : "";
-    const applyFor = document.getElementById('applyFor').value;
-    const profession = document.getElementById('profession').value;
-    const annualAmount = document.getElementById('incomeAmount').value;
-    
-
-
-    // ✅ Get Aadhaar filename (and check size)
-    const aadharInput = document.getElementById('aadharPath');
-    let aadharPath = "";
-    if (aadharInput.files.length > 0) {
-      const file = aadharInput.files[0];
-      if (file.type !== "application/pdf") {
-        alert("⚠️ Please upload a valid PDF file for Aadhaar!");
-        return;
-      }
-      if (file.size > 200 * 1024) {
-        alert("⚠️ Aadhaar file must be less than 200 KB!");
-        return;
-      }
-      aadharPath = file.name;
-    }
-
-    const residenceType = document.querySelector('input[name="residenceType"]:checked')?.value || "";
-
-    const formDataJSON = {
-      gender, salutation, applicantName, applicantNameHindi,
-      fatherName, fatherNameHindi, motherName, motherNameHindi,
-      husbandName, husbandNameHindi, mobile, email, state, district,
-      subdivision, block, localBodyType, wardNo, village, postOffice,
-      policeStation, pincode, photoPath,aadharPath, residenceType,applyFor,profession,
-      annualAmount
-    };
-
-    document.getElementById('output').textContent = JSON.stringify(formDataJSON, null, 2);
-
-    // ✅ Save to localStorage
-    let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
-    all.push(formDataJSON);
-    localStorage.setItem("residenceApplications", JSON.stringify(all));
-
-    loadSavedApplications();
-
-    // ✅ NEW — Send to Python Flask immediately
-    fetch("http://127.0.0.1:5000/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formDataJSON)
-    })
-    .then(res => res.json())
-    .then(r => console.log("✅ Sent to Python:", r))
-    .catch(err => console.error("❌ Error sending to Python:", err));
-
-    alert("✅ Application saved & sent to Python automation!");
-  });
-
-  // ✅ Handle "View" button click
-  document.getElementById("viewBtn").addEventListener("click", function() {
-    const index = document.getElementById("savedList").value;
-    const savedOutput = document.getElementById("savedOutput");
-    if (index === "") {
-      savedOutput.textContent = "Please select an application first.";
-      return;
-    }
-    const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
-    savedOutput.textContent = JSON.stringify(all[index], null, 2);
-  });
-
-  // ✅ Handle "Delete" button click
-  document.getElementById("deleteBtn").addEventListener("click", function() {
-    const index = document.getElementById("savedList").value;
-    if (index === "") {
-      alert("Please select an application to delete.");
-      return;
-    }
-    let all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
-    all.splice(index, 1);
-    localStorage.setItem("residenceApplications", JSON.stringify(all));
-    loadSavedApplications();
-    document.getElementById("savedOutput").textContent = "";
-    alert("🗑️ Application deleted.");
-  });
-
-  // ✅ NEW — Run Saved in Python
-  document.getElementById("runSavedBtn").addEventListener("click", function() {
-    const index = document.getElementById("savedList").value;
-    if (index === "") return alert("Select a saved application first!");
-
-    const all = JSON.parse(localStorage.getItem("residenceApplications") || "[]");
-    const selected = all[index];
-
-    fetch("http://127.0.0.1:5000/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(selected)
-    })
-    .then(res => res.json())
-    .then(r => alert("✅ Sent saved form to Python automation!"))
-    .catch(err => alert("❌ Error sending to Python: " + err));
-  });
-
-  // ✅ Load saved list on page load
-  window.addEventListener("load", loadSavedApplications);
-</script> -->
-
-
-
-
-
-
-
-
+  <!-- to run saved data  -->
 
   <script>
     // ✅ Load saved applications into dropdown
@@ -1206,7 +1058,7 @@ document.getElementById("runSavedBtn").addEventListener("click", async function 
 
 
 
-
+<!-- FOR subdivision -->
   <script>
     // Simple function for district/subdivision/block cascading example - can be expanded
     // For demo, no elaborate cascading implemented here
@@ -1332,6 +1184,54 @@ document.getElementById("runSavedBtn").addEventListener("click", async function 
       });
     }
 
+      // Function to auto-translate input and replace text with Hindi
+    // function enableInlineTranslation(inputId) {
+    //   const input = document.getElementById(inputId);
+
+    //   // Trigger translation when user stops typing
+    //   let timer;
+    //   input.addEventListener("input", () => {
+    //     clearTimeout(timer);
+    //     timer = setTimeout(async () => {
+    //       const text = input.value;
+    //       if (text.trim()) {
+    //         const translated = await translateText(text, "hi");
+    //         input.value = translated;
+    //       }
+    //     }, 800); // waits 0.8 seconds after typing stops
+    //   })
+
+    // }
+
+
+    function enableInlineTranslation(inputId) {
+      const input = document.getElementById(inputId);
+
+      let timer;
+      input.addEventListener("input", () => {
+        clearTimeout(timer);
+
+        timer = setTimeout(async () => {
+          const text = input.value.trim();
+
+          // Check: If contains English letters (A-Z a-z)
+          const isEnglish = /[A-Za-z]/.test(text);
+
+          if (text && isEnglish) {
+            const translated = await translateText(text, "hi");
+            input.value = translated;
+          }
+          // If Hindi or non-English → do nothing
+        }, 800);
+      });
+
+    }
+
+
+    // Apply to specific fields
+    enableInlineTranslation("village");
+    enableInlineTranslation("postOffice");
+
     // Apply for each English → Hindi input pair
     autoTranslate("applicantName", "applicantNameHindi");
     autoTranslate("fatherName", "fatherNameHindi");
@@ -1359,13 +1259,21 @@ document.getElementById("runSavedBtn").addEventListener("click", async function 
         ],
         "NEEMCHAK BATHANI/नीमचक बथानी": [
           "NEEMCHAK BATHANI/नीमचक बथानी",
+          "ATRI/अतरी",
+          "MOHRA/मोहरा",
           "KHIZARSARAI/खिज़रसराय"
         ],
         "SHERGHATTY/शेरघाटी": [
+          "AMAS/आमस",
+          "BANKEY BAZAR/बाँके बाज़ार",
+          "BARACHATTI/बाराचट्टी",
+          "DUMARIA/डुमरिया",
+          "GURUA/गुरुआ",
+          "IMAMGANJ/इमामगंज",
+          "MOHANPUR/मोहनपुर",          
           "SHERGHATTI/शेरघाटी",
-          "MOHANCHI/मोहनची",
           "DOBHI/डोभी",
-          "BUNIYADGANJ/बुनियादगंज"
+
         ],
         "TEKARI/टेकारी": [
           "TEKARI/टेकारी",
